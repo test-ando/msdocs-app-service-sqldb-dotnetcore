@@ -29,9 +29,10 @@ jobs:
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
+        context: ./application/
         push: true
-        tags: nttdatakansaiacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_30f573ce22184716a7d641465df92f3f }}/hello-world:${{ github.sha }}
-        file: ./Dockerfile
+        tags: nttdatakansaiacr.azurecr.io/hello-world:v1
+        file: ./application/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,4 +49,4 @@ jobs:
         app-name: 'kansai-app-docker03'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_9eb2128fd9ab4dc092fd84913ce1dda9 }}
-        images: 'nttdatakansaiacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_30f573ce22184716a7d641465df92f3f }}/hello-world:${{ github.sha }}'
+        images: 'nttdatakansaiacr.azurecr.io/hello-world:v1'

@@ -31,7 +31,7 @@ jobs:
       with:
         context: ./DotNetCoreSqlDb/
         push: true
-        tags: nttdatakansaiacr.azurecr.io/hello-world:v1
+        tags: nttdatakansaiacr.azurecr.io/hello-world:v3
         file: ./DotNetCoreSqlDb/Dockerfile
 
   deploy:
@@ -49,4 +49,4 @@ jobs:
         app-name: 'kansai-app-docker03'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_9eb2128fd9ab4dc092fd84913ce1dda9 }}
-        images: 'nttdatakansaiacr.azurecr.io/hello-world:v1'
+        images: 'nttdatakansaiacr.azurecr.io/hello-world:v3'

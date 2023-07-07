@@ -29,10 +29,10 @@ jobs:
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
-        context: ./application/
+        context: ./DotNetCoreSqlDb/
         push: true
         tags: nttdatakansaiacr.azurecr.io/hello-world:v1
-        file: ./application/Dockerfile
+        file: ./DotNetCoreSqlDb/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
